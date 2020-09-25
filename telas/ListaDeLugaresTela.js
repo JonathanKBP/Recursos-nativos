@@ -3,16 +3,25 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  Text, Platform
+  Text, 
+  Platform,
+  FlatList
 } from 'react-native';
+import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import BotaoCabecalho from '../componentes/BotaoCabecalho';
+import Lugar from '../modelo/Lugar';
 
 const ListaDeLugaresTela = (props) => {
+  const lugares = useSelector(estado => estado.lugares.lugares)
   return (
-    <View>
-      <Text>ListaDeLugaresTela</Text>
-    </View>
+    <FlatList
+      data={lugares}
+      keyExtractor={lugar => lugar.id}
+      renderItem={lugar => {
+      return <Text>{JSON.stringify(lugar)}</Text>
+      }}
+    />
   )
 }
 

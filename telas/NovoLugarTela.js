@@ -8,12 +8,22 @@ import {
   TextInput,
   Button
 } from 'react-native';
+import { useDispatch } from 'react-redux';
+import * as lugaresActions from '../store/lugares-action';
+
 
 const NovoLugarTela = (props) => {
+  const dispath = useDispatch();
   const [novoLugar, setNovoLugar] = useState ('');
   const novoLugarAlterado = (texto) => {
     setNovoLugar (texto);
   }
+
+const adicionarLugar = () => {
+  dispath (lugaresActions.addLugar (novoLugar));
+  props.navigation.goBack();
+}
+
   return (    
       <ScrollView>
         <View style={estilos.form}>
@@ -26,8 +36,8 @@ const NovoLugarTela = (props) => {
           <Button 
             title="Salvar lugar"
             onPress={() => {
-              console.log(`Botão para adição de lugar clicado: ${novoLugar}`)
-              setNovoLugar('')
+              adicionarLugar();
+              setNovoLugar('');
             }}/>
         </View>
       </ScrollView>
