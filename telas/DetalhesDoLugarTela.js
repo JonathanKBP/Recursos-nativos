@@ -6,14 +6,11 @@ import {
   Text
 } from 'react-native';
 
-const DetalhesDoLugarTela = (props) => {
-  return (
-    <View>
-      <Text>DetalhesDoLugarTela</Text>
-    </View>
-  )
-}
-
+const DetalhesDoLugarTela = navigationOptions = (dadosNav) => {
+  return {
+  headerTitle: dadosNav.navigation.getParam('tituloLugar')
+  }
+};
 const estilos = StyleSheet.create({
 
 });

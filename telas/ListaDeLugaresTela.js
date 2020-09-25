@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import BotaoCabecalho from '../componentes/BotaoCabecalho';
 import Lugar from '../modelo/Lugar';
+import LugarItem from '../componentes/LugarItem';
 
 const ListaDeLugaresTela = (props) => {
   const lugares = useSelector(estado => estado.lugares.lugares)
@@ -18,9 +19,16 @@ const ListaDeLugaresTela = (props) => {
     <FlatList
       data={lugares}
       keyExtractor={lugar => lugar.id}
-      renderItem={lugar => {
-      return <Text>{JSON.stringify(lugar)}</Text>
-      }}
+      renderItem={lugar =>
+        <LugarItem
+          nomeLugar={lugar.item.titulo}
+          onSelect={() =>
+            props.navigation.navigate('DetalheDoLugar', { tituloLugar: lugar.item.titulo,
+            idLugar: lugar.id })}
+          imagem={lugar.item.imagemURI}
+          endereco={null}
+        />  
+      }
     />
   )
 }

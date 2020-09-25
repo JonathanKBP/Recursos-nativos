@@ -6,18 +6,18 @@ import {
   StyleSheet,
   TouchableOpacity
 }
-from 'reacr-native';
+from 'react-native';
 
 import Cores from '../constantes/Cores';
 
 const LugarItem = (props) => {
   return (
     <TouchableOpacity onPress={props.onSelect} style={styles.lugarItem}>
-      <image
+      <Image
         style={styles.imagem}
         source={{uri: props.imagem}}
       />
-      <View style={infoContainer}>
+      <View style={styles.infoContainer}>
         <Text style={styles.nomeLugar}>{props.nomeLugar}</Text>
         <Text style={styles.endereco}>{props.endereco}</Text>
       </View>

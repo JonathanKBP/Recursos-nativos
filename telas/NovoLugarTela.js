@@ -9,18 +9,25 @@ import {
   Button
 } from 'react-native';
 import { useDispatch } from 'react-redux';
+import TiraFoto from '../componentes/TiraFoto';
 import * as lugaresActions from '../store/lugares-action';
 
 
 const NovoLugarTela = (props) => {
   const dispath = useDispatch();
   const [novoLugar, setNovoLugar] = useState ('');
+  const [imagemURI, setImagemURI] = useState ();
+  
+  const fotoTirada = imagemURI => {
+    setImagemURI(imagemURI);
+  }
+
   const novoLugarAlterado = (texto) => {
     setNovoLugar (texto);
   }
 
 const adicionarLugar = () => {
-  dispath (lugaresActions.addLugar (novoLugar));
+  dispath (lugaresActions.addLugar (novoLugar, imagemURI));
   props.navigation.goBack();
 }
 
@@ -33,6 +40,7 @@ const adicionarLugar = () => {
             onChangeText={novoLugarAlterado}
             value={novoLugar}
           />
+          <TiraFoto onFotoTirada={fotoTirada}/>
           <Button 
             title="Salvar lugar"
             onPress={() => {
