@@ -9,6 +9,7 @@ import {
   Button
 } from 'react-native';
 import { useDispatch } from 'react-redux';
+import CapturaLocalizacao from '../componentes/CapturaLocalizacao';
 import TiraFoto from '../componentes/TiraFoto';
 import * as lugaresActions from '../store/lugares-action';
 
@@ -41,6 +42,7 @@ const adicionarLugar = () => {
             value={novoLugar}
           />
           <TiraFoto onFotoTirada={fotoTirada}/>
+          <CapturaLocalizacao/>
           <Button 
             title="Salvar lugar"
             onPress={() => {
